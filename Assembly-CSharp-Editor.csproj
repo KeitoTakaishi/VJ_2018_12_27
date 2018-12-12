@@ -95,6 +95,53 @@
     <Compile Include="Assets\PostProcessing\Editor\Utils\EditorResources.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Utils\FxStyles.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Utils\ReflectionUtils.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Brush Modes\z_BrushMode.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Brush Modes\z_BrushModeMesh.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Brush Modes\z_BrushModePaint.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Brush Modes\z_BrushModePrefab.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Brush Modes\z_BrushModeRaiseLower.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Brush Modes\z_BrushModeSculpt.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Brush Modes\z_BrushModeSmooth.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Brush Modes\z_BrushModeTexture.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Classes\z_BrushSettings.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Classes\z_BrushTarget.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Classes\z_ColorPalette.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Classes\z_Delegate.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Classes\z_EditableObject.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Classes\z_LocalPref.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Classes\z_PrefabAndSettings.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Classes\z_PrefabPalette.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Classes\z_PreferenceDictionary.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Classes\z_RaycastHit.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Classes\z_ReflectionUtil.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Enum\z_BrushTool.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Interface\z_About.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Interface\z_AdditionalVertexStreamsEditor.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Interface\z_AttributeLayoutContainerEditor.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Interface\z_AttributeLayoutJsonEditor.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Interface\z_BlendMaterialInspector.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Interface\z_BrushSettingsEditor.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Interface\z_ColorPaletteEditor.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Interface\z_Editor.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Interface\z_GlobalSettingsEditor.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Interface\z_MeshFilterEditor.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Interface\z_PrefabPaletteEditor.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Interface\z_PreferenceDictionaryEditor.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Interface\z_SplatWeightEditor.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Interface\z_ZoomOverrideEditor.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_AssetPreview.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_BakeAdditionalVertexStreams.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_Debug.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_EditorUtility.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_GUI.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_GUILayout.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_Handles.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_IconImporter.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_IconUtility.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_PostProcessTextureBlend.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_Pref.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_SceneUtility.cs" />
+    <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_ShaderUtil.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -106,6 +153,9 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity2018.2.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -376,6 +426,27 @@
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="ProBuilderMeshOps">
+      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ProBuilderMeshOps.dll</HintPath>
+    </Reference>
+    <Reference Include="Poly2Tri">
+      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
+    </Reference>
+    <Reference Include="ProBuilderEditor">
+      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Editor/ProBuilderEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="AssetIdRemapUtility">
+      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/AssetIdRemapUtility/Editor/AssetIdRemapUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="ProBuilderCore">
+      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ProBuilderCore.dll</HintPath>
+    </Reference>
+    <Reference Include="KdTreeLib">
+      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="pb_Stl">
+      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity2018.2.3f1/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/mscorlib.dll</HintPath>
