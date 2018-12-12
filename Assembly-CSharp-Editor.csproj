@@ -142,6 +142,9 @@
     <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_Pref.cs" />
     <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_SceneUtility.cs" />
     <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Utility\z_ShaderUtil.cs" />
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -153,9 +156,6 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity2018.2.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -418,6 +418,27 @@
     <Reference Include="UnityEditor.Analytics">
       <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/Editor/UnityEditor.Analytics.dll</HintPath>
     </Reference>
+    <Reference Include="AssetIdRemapUtility">
+      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/AssetIdRemapUtility/Editor/AssetIdRemapUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="ProBuilderCore">
+      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ProBuilderCore.dll</HintPath>
+    </Reference>
+    <Reference Include="ProBuilderMeshOps">
+      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ProBuilderMeshOps.dll</HintPath>
+    </Reference>
+    <Reference Include="KdTreeLib">
+      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="pb_Stl">
+      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
+    </Reference>
+    <Reference Include="Poly2Tri">
+      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
+    </Reference>
+    <Reference Include="ProBuilderEditor">
+      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Editor/ProBuilderEditor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
@@ -426,27 +447,6 @@
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
-    </Reference>
-    <Reference Include="ProBuilderMeshOps">
-      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ProBuilderMeshOps.dll</HintPath>
-    </Reference>
-    <Reference Include="Poly2Tri">
-      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
-    </Reference>
-    <Reference Include="ProBuilderEditor">
-      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Editor/ProBuilderEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="AssetIdRemapUtility">
-      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/AssetIdRemapUtility/Editor/AssetIdRemapUtility.dll</HintPath>
-    </Reference>
-    <Reference Include="ProBuilderCore">
-      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ProBuilderCore.dll</HintPath>
-    </Reference>
-    <Reference Include="KdTreeLib">
-      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
-    </Reference>
-    <Reference Include="pb_Stl">
-      <HintPath>C:/Users/takai/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity2018.2.3f1/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/mscorlib.dll</HintPath>
