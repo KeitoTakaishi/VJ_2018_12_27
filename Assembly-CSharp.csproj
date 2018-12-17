@@ -137,6 +137,13 @@
     <Compile Include="Assets\ProCore\Polybrush\Code\Scripts\Utility\z_MeshUtility.cs" />
     <Compile Include="Assets\ProCore\Polybrush\Code\Scripts\Utility\z_Util.cs" />
     <Compile Include="Assets\ProCore\Polybrush\Code\Scripts\Utility\z_Vector.cs" />
+    <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Constant.cs" />
+    <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Enum.cs" />
+    <Compile Include="Assets\ProCore\ProGrids\Classes\pg_IconUtility.cs" />
+    <Compile Include="Assets\ProCore\ProGrids\Classes\pg_IgnoreSnapAttribute.cs" />
+    <Compile Include="Assets\ProCore\ProGrids\Classes\pg_SceneMeshRender.cs" />
+    <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Util.cs" />
+    <Compile Include="Assets\ProCore\ProGrids\MonoBehaviour\pg_IgnoreSnap.cs" />
     <Compile Include="Assets\Scene2\Scripts\CameraUtil.cs" />
     <Compile Include="Assets\Scene2\Scripts\CamS.cs" />
     <Compile Include="Assets\Scene2\Scripts\CreateCSV.cs" />
@@ -153,6 +160,10 @@
     <Compile Include="Assets\Scene2\SimpleJSON\SimpleJSON.cs" />
     <Compile Include="Assets\Scene2\SimpleJSON\SimpleJSONBinary.cs" />
     <Compile Include="Assets\Scene2\SimpleJSON\SimpleJSONUnity.cs" />
+    <Compile Include="Assets\Scene3\Scripts\CurlNoiseParticle.cs" />
+    <Compile Include="Assets\Scene3\Scripts\PrismMesh.cs" />
+    <Compile Include="Assets\Scene3\Scripts\PrismMove.cs" />
+    <Compile Include="Assets\Scene3\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\Follow.cs" />
     <Compile Include="Assets\Scripts\generate.cs" />
     <Compile Include="Assets\Scripts\visualize.cs" />
@@ -177,6 +188,7 @@
     <Compile Include="Assets\uOSC\Assets\uOSC\Scripts\uOscClient.cs" />
     <Compile Include="Assets\uOSC\Assets\uOSC\Scripts\uOscServer.cs" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
+    <None Include="Assets\ProCore\ProGrids\Shader\pg_GridShader.shader" />
     <None Include="Assets\Scene2\Shaders\GlitchFx.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_TriPlanarBlend_SfSrc.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_TextureBlendMobile.shader" />
@@ -209,8 +221,10 @@
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
     <None Include="Assets\Scene2\Shaders 1\GlitchFx.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Uber.shader" />
+    <None Include="Assets\ProCore\ProGrids\About\pc_AboutEntry_ProGrids.txt" />
     <None Include="Assets\Scene2\Shaders 1\FeedBackFx.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Blit.shader" />
+    <None Include="Assets\Scene3\Shaders\Instance.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_TextureBlendModulate.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformRender.shader" />
     <None Include="Assets\Scene2\Shaders 1\SimplexNoise3D.cginc" />
@@ -228,7 +242,7 @@
     <None Include="Assets\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
     <None Include="Assets\Scene2\Shaders\test.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\Example\z_UnlitTextureBlend_WithMetaData.shader" />
-    <None Include="Assets\Scene1\Shaders\GeometryShader.shader" />
+    <None Include="Assets\Scene1\Shaders\GeometryShader_.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Common.cginc" />
     <None Include="Assets\Scene2\Shaders 1\Vertex.shader" />
     <None Include="Assets\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
@@ -256,6 +270,8 @@
     <None Include="Assets\Scene2\Shaders 1\mat.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_DiffuseVertexColor.shader" />
+    <None Include="Assets\ProCore\ProGrids\About\changelog.txt" />
+    <None Include="Assets\Scene3\Resouces\Instancing.compute" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_TextureBlender_SfSrc.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_TextureBlendBmp_SfSrc.shader" />
@@ -263,9 +279,11 @@
     <None Include="Assets\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_TriPlanarBlend.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
+    <None Include="Assets\Scene1\Shaders\GeomShader.shader" />
     <None Include="Assets\Scene2\Shaders 1\WireFrame.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_TextureBlendWithVertexColor_SfSrc.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
+    <None Include="Assets\Scene3\Shaders\SimplexNoise3D.cginc" />
     <None Include="Assets\Scene2\Shaders 1\test.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_Overlay.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />

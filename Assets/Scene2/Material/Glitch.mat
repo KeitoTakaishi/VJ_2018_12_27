@@ -75,8 +75,8 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Threshold: -0.5131337
-    - _TimeMag: 30.711092
+    - _Threshold: 0.32676497
+    - _TimeMag: 22.49651
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:

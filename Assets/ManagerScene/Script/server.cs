@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 namespace uOSC
 {
@@ -20,13 +21,12 @@ namespace uOSC
 
         void OnDataReceived(Message message)
         {
-            string val = "";
-
-            foreach (var value in message.values) {
-                val = value.GetString();
+            if (message.address.Contains("chan2")) {
+                foreach (var value in message.values) {
+                    _val = float.Parse(value.GetString());
+                }
             }
 
-            _val = float.Parse(val);
             Debug.Log(_val);
         }
     }
