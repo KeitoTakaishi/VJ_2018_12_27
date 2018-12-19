@@ -1,0 +1,107 @@
+﻿#pragma kernel Emit
+#pragma kernel Iterator
+
+#define THREAD_X 128
+#define THREAD_Y 1
+#define THREAD_Z 1
+
+#define EPSILON 1e-3
+
+struct Params
+{
+    float3 emitPos;
+    float3 position;
+    float4 velocity;
+    float3 life;//x:elapsedTime. y:lifeTime, z:Active or Die
+    float3 size;
+    float4 color;
+    float4 startColor;
+    float4 endColor;
+
+};
+
+float convergence;
+float4 additionalVector;
+float viscosity = 5.0;
+
+
+RWStructuredBuffer<Params> buf;
+float2 times;
+
+#include "SimplexNoise3D.cginc"
+float3 curlNoise(float3 coord)
+{
+    float3 dx = float3(EPSILON, 0.0, 0.0);
+    float3 dy = float3(0.0, EPSILON, 0.0);
+    float3 dz = float3(0.0, 0.0, EPSILON);
+
+    float3 dpdx0 = simplexNoise(coord - dx);
+    float3 dpdx1 = simplexNoise(coord + dx);
+    float3 dpdy0 = simplexNoise(coord - dy);
+    float3 dpdy1 = simplexNoise(coord + dy);
+    float3 dpdz0 = simplexNoise(coord - dz);
+    float3 dpdz1 = simplexNoise(coord + dz);
+
+    float x = dpdy1.z - dpdy0.z + dpdz1.y - dpdz0.y;
+    float y = dpdz1.x - dpdz0.x + dpdx1.z - dpdx0.z;
+    float z = dpdx1.y - dpdx0.y + dpdy1.x - dpdy0.x;
+
+    return float3(x, y, z) / EPSILON * 2.0;
+}
+
+float rand(float3 co)
+{
+    return frac(sin(dot(co.xyz, float3(12.9898, 78.233, 45.5432))) * 43758.5453);
+}
+
+
+[numthreads(THREAD_X, THREAD_Y, THREAD_Z)]
+void Emit(uint id : SV_DispatchThreadID)
+{
+    Params p = buf[id];
+    
+    if( p.life.z == -1.0 ){
+        p.life = float3(0.0, p.life.y, 1.0);
+        p.position = p.emitPos * saturate(times.y * 0.3);
+        p.size.x = p.size.y;
+        p.color = p.startColor;
+    }
+ 
+    buf[id] = p;
+}
+
+[numthreads(THREAD_X, THREAD_Y, THREAD_Z)]
+void Iterator(uint id : SV_DispatchThreadID)
+{
+    Params p = buf[id];
+    if(p.life.z == 1.0){
+        p.life.x += times.x;
+        //die
+        if(p.life.x > p.life.y){
+            p.life.z = -1.0;
+        }else{
+            float3 force = curlNoise(p.position * times.x * convergence) - p.velocity.xyz;
+            //saturateは引数を0~1にclampする
+            p.velocity.xyz += (force + additionalVector) * times.x * viscosity * saturate(times.y * 0.5);
+            p.position += p.velocity.xyz * times.x;
+            
+            
+
+
+            /*
+            p.position.y += rand(float3(p.position.x, times.y, p.position.z))*2.0*times.x;
+            if(p.life.x <= p.life.y/2.0){
+                p.size.x = lerp(p.size.y, p.size.z, saturate(p.life.x / (p.life.y)));
+            }
+            else if(p.life.x > p.life.y/2.0){
+              p.size.x = lerp(p.size.z, p.size.y, saturate((p.life.x - (p.life.y/2.0)) / (p.life.y/2.0)));
+           */
+
+          p.color = lerp(p.startColor, p.endColor, saturate(p.life.x / p.life.y));
+          p.size.x = lerp(p.size.y, p.size.z, saturate(p.life.x / p.life.y)) * saturate(times.y * 0.1);
+        }
+    }
+    
+    buf[id] = p;
+}
+

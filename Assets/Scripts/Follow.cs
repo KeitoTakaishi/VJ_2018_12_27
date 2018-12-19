@@ -11,7 +11,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions.Comparers;
 using UnityEngine.UI;
-using Random = System.Random;
+
 
 
 public class Follow : MonoBehaviour
@@ -28,6 +28,7 @@ public class Follow : MonoBehaviour
     #region Editable Properties
     [SerializeField] Interpolator _interpolator;
     [SerializeField] private Transform _target;
+    [SerializeField] private Transform[] _targets;
     [SerializeField] private int _interval = 60;
     [SerializeField] private AnimationCurve _anim;
     [SerializeField] private float _radius = 15.0f;
@@ -97,6 +98,8 @@ public class Follow : MonoBehaviour
     {
         var _dt = 1.0f / _interval;
         if (isInterval()) {
+            var index = UnityEngine.Random.Range(0, _targets.Length);
+            _target = _targets[index];
             _nextPos = NextPos();
             _curPos = this.transform.position;
             t = 0.0f;

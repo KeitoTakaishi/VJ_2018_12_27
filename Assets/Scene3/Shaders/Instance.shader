@@ -1,82 +1,94 @@
-﻿Shader "Custom/Instance" {
-	Properties {
-		_MainTex ("Albedo (RGB)", 2D) = "white" {}
-		[HDR]
-		_Color("color", color) = (1.0, 1.0, 1.0, 1.0)
-	}
-
-    CGINCLUDE
-        #include "UnityCG.cginc"
-        #include "UnityLightingCommon.cginc"
-        #include "AutoLight.cginc"
+﻿Shader "Custom/Particle"
+{
+    Properties
+    {
+        _MainTex("Base (RGB) Trans (A)", 2D) = "white" {}
+        
+        [HDR]
+        _Color("Color", color) = (1.0,1.0, 1.0, 1.0)
+    }
+        CGINCLUDE
+#include "UnityCG.cginc"
+#include "UnityLightingCommon.cginc"
+#include "AutoLight.cginc"
 
         struct Params
-        {
-            float3 emitPos;
-            float3 position;
-            float3 life;
-            float3 size;
-            float4 color;
-            float4 StartColor;
-            float4 EndColor;
-        };
+    {
+        float3 emitPos;
+        float3 position;
+        float4 velocity; //xyz = velocity, w = velocity coef
+        float3 life;     // x = time elapsed, y = life time, z = isActive 1 is active, -1 is disactive
+        float3 size;     // x = current size, y = start size, z = target size.
+        float4 color;
+        float4 startColor;
+        float4 endColor;
+    };
 
-        StructuredBuffer<Params> buf;
-        sampler _MainTex;
-        float4x4 modelMatrix;
-        float timer;
-        
-        struct v2f
-        {
-            float4 pos : SV_POSITION;
-            float2 uv_MainTex : TEXCOORD0;
-            float3 ambient : TEXCOORD1;
-            float3 diffuse : TEXCOORD2;
-            float3 color : TEXCOORD3;
-            SHADOW_COORDS(4)
-        };
+#if SHADER_TARGET >= 45
+    StructuredBuffer<Params> buf;
+#endif
 
+    sampler2D _MainTex;
+    float4x4  modelMatrix;
 
+    struct v2f
+    {
+        float4 pos : SV_POSITION;
+        float2 uv_MainTex : TEXCOORD0;
+        float3 ambient : TEXCOORD1;
+        float3 diffuse : TEXCOORD2;
+        float3 color : TEXCOORD3;
+        SHADOW_COORDS(4)
+    };
 
-        v2f vert(appdata_full v, uint id : SV_InstanceID)
-        {
-            Params p = buf[id];
-             
-            //float3 localPosition = v.vertex.xyz * (modf(timer, p.lifeTime))/100.0 + p.position;
-            float3 localPosition = v.vertex.xyz * p.size.x + p.position;
-           //float3 localPosition = simplexNoise(v.vertex.xyz);
+    float _val  = 1.0;
+    v2f vert(appdata_full v, uint id : SV_InstanceID)
+    {
+        Params p = buf[id];
 
+        float3 localPosition = (v.vertex.xyz * p.size.x * _val) + p.position;
+        float3 worldPosition = mul(unity_ObjectToWorld, float4(localPosition, 1.0));
+        float3 worldNormal = v.normal;
 
+        float3 ndotl = saturate(dot(worldNormal, _WorldSpaceLightPos0.xyz));
+        float3 ambient = ShadeSH9(float4(worldNormal, 1.0f));
+        float3 diffuse = (ndotl * _LightColor0.rgb);
+        float3 color = p.color;
 
-            float3 worldPosition = mul(unity_ObjectToWorld, float4(localPosition, 1.0));
-            
-            v2f o;
-            o.pos = mul(UNITY_MATRIX_VP, float4(worldPosition, 1.0f));
-            o.color = p.color.rgb;
+        v2f o;
+        o.pos = mul(UNITY_MATRIX_VP, float4(worldPosition, 1.0f));
+        o.uv_MainTex = v.texcoord;
+        o.ambient = ambient;
+        o.diffuse = diffuse;
+        o.color = color;
+        TRANSFER_SHADOW(o)
             return o;
-        }
-        
-        fixed4 _Color;
-        fixed4 frag(v2f i) : SV_Target
+    }
+
+    fixed4 _Color;
+    fixed4 frag(v2f i) : SV_Target
+    {
+        fixed shadow = SHADOW_ATTENUATION(i);
+        fixed4 albedo = tex2D(_MainTex, i.uv_MainTex);
+        float3 lighting = i.diffuse * shadow + i.ambient;
+        fixed4 output = fixed4(albedo.rgb * i.color * lighting, albedo.w)*_Color;
+        UNITY_APPLY_FOG(i.fogCoord, output);
+        return output;
+    }
+
+        ENDCG
+
+        SubShader
+    {
+        Tags{ "LightMode" = "ForwardBase" }
+            Pass
         {
-        
-            fixed4 output = _Color * fixed4(i.color, 0.1);
-            return output;
-         
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #pragma multi_compile_fwdbase nolightmap nodirlightmap nodynlightmap novertexlight
+            #pragma target 5.0
+            ENDCG
         }
-    ENDCG
-	SubShader 
-	{
-		Tags { "Queue" = "Transparent" }
-        
-        Pass
-        {
-		CGPROGRAM
-		#pragma vertex vert 
-		#pragma fragment frag
-		#pragma multi_compile_fwdbase nolightmap nodirlightmap nodynlightmap novertexlight
-		#pragma target 5.0
-		ENDCG
-		}	
-	}
+    }
 }

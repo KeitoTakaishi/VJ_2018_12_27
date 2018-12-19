@@ -6,33 +6,36 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine.Assertions;
 using Random = System.Random;
+using uOSC;
 
 namespace CurlNoise
 {
     public class CurlNoiseParticle : MonoBehaviour
     {
+#pragma warning disable 0414
         struct Params
         {
             Vector3 emitPos;
             Vector3 position;
-            Vector3 life;
-            Vector3 size;
+            Vector4 velocity; //xyz = velocity, w = velocity coef;
+            Vector3 life;     // x = time elapsed, y = life time, z = isActive 1 is active, -1 is disactive.
+            Vector3 size;     // x = current size, y = start size, z = target size.
             Vector4 color;
             Vector4 startColor;
             Vector4 endColor;
 
-            public Params(Vector3 emitPos, Vector3 pos, float lifeTime, float startSize, float endSize, Color start, Color end)
+            public Params(Vector3 emitPos, float life, float startSize, float endSize, Color startColor, Color endColor)
             {
                 this.emitPos = emitPos;
-                this.position = pos;
-                this.life = new Vector3(0f, lifeTime, 1.0f);//x:elapsedTime. y:lifeTime, z:Active or Die
-                this.size = new Vector3(0.0f, startSize, endSize);
+                this.position = Vector3.zero;
+                this.velocity = Vector3.zero;
+                this.life = new Vector3(0, life, -1);
+                this.size = new Vector3(0, startSize, endSize);
                 this.color = Color.white;
-                this.startColor = start;
-                this.endColor = end;
+                this.startColor = startColor;
+                this.endColor = endColor;
             }
         }
-
 
         public struct GPUThreads
         {
@@ -42,10 +45,21 @@ namespace CurlNoise
 
             public GPUThreads(uint x, uint y, uint z)
             {
-                this.x = (int) x;
-                this.y = (int) y;
-                this.z = (int) z;
+                this.x = (int)x;
+                this.y = (int)y;
+                this.z = (int)z;
             }
+        }
+
+        public static class DirectCompute5_0
+        {
+            //Use DirectCompute 5.0 on DirectX11 hardware.
+            public const int MAX_THREAD = 1024;
+            public const int MAX_X = 1024;
+            public const int MAX_Y = 1024;
+            public const int MAX_Z = 64;
+            public const int MAX_DISPATCH = 65535;
+            public const int MAX_PROCESS = MAX_DISPATCH * MAX_THREAD;
         }
 
         [Serializable]
@@ -58,18 +72,22 @@ namespace CurlNoise
         [Serializable]
         public struct Sizes
         {
-            [Range(0f, 10f)] public float startSize;
-            [Range(0f, 10f)] public float endSize;
+            [Range(0f, 10f)]
+            public float startSize;
+            [Range(0f, 10f)]
+            public float endSize;
         }
 
         [Serializable]
         public struct Lives
         {
-            [Range(0f, 60f)] public float minLife;
-            [Range(0f, 60f)] public float maxLife;
+            [Range(0f, 60f)]
+            public float minLife;
+            [Range(0f, 60f)]
+            public float maxLife;
         }
 
-        #region variables
+        #region Variables
 
         private enum ComputeKernels
         {
@@ -77,122 +95,128 @@ namespace CurlNoise
             Iterator
         }
 
-        #endregion
-
         private Dictionary<ComputeKernels, int> kernelMap = new Dictionary<ComputeKernels, int>();
         private GPUThreads gpuThreads;
 
         [SerializeField] int instanceCount = 100000;
+        [SerializeField] List<Colors> colors = new List<Colors>();
+        [SerializeField] List<Sizes> sizes = new List<Sizes>();
+        [SerializeField] List<Lives> lives = new List<Lives>();
+        [SerializeField] Vector3 additionalVector;
+        [SerializeField] float emitterSize = 10f;
+        [SerializeField] float convergence = 4f;
+        [SerializeField] float viscosity = 5f;
         [SerializeField] Mesh instanceMesh;
-        [SerializeField] Material instanceMaterial; //<---DMII
+        [SerializeField] Material instanceMaterial;
         [SerializeField] ComputeShader computeShader;
-        [SerializeField] List<Sizes>  sizes  = new List<Sizes>();
-        [SerializeField] List<Colors>  colors  = new List<Colors>();
-        
-
 
         private ComputeShader computeShaderInstance;
+
         private int cachedInstanceCount = -1;
         private ComputeBuffer cBuffer;
-        private ComputeBuffer argsBuffer; //<---DMII
-        private uint[] args = new uint[5] {0, 0, 0, 0, 0};
+        private ComputeBuffer argsBuffer;
+        private uint[] args = new uint[5] { 0, 0, 0, 0, 0 };
         private Renderer render;
         private float timer = 0f;
-        private Vector2 times;
-
-        private int SubMeshIndex = 0; //<---DMII
-        private Bounds bounds; //<---DMII
-
-
-
+        private float idleTime = 3f;
 
         private int bufferPropId;
         private int timesPropId;
-        private int lifePropId;
+        private int convergencePropId;
+        private int viscosityPropId;
+        private int additionalVectorPropId;
         private int modelMatrixPropId;
+        private int valPropId;
 
+        #endregion
 
-
-        private void Initialize()
+        void Initialize()
         {
-            bounds = new Bounds(Vector3.zero, new Vector3(100, 100, 100));
             computeShaderInstance = computeShader;
-
+            //computeShaderInstance = (ComputeShader)Resources.Load("Instancing");
             render = GetComponent<Renderer>();
-
             uint threadX, threadY, threadZ;
 
-
-
-            //FindKernel:Emit,Iterator
             kernelMap = System.Enum.GetValues(typeof(ComputeKernels))
                 .Cast<ComputeKernels>()
                 .ToDictionary(t => t, t => computeShaderInstance.FindKernel(t.ToString()));
 
-            computeShaderInstance.GetKernelThreadGroupSizes(kernelMap[ComputeKernels.Emit], out threadX, out threadY,
-                out threadZ);
+
+            //kernel sizeを取得
+            computeShaderInstance.GetKernelThreadGroupSizes(kernelMap[ComputeKernels.Emit], out threadX, out threadY, out threadZ);
             gpuThreads = new GPUThreads(threadX, threadY, threadZ);
+
+            /*--express 
+            //-https://docs.unity3d.com/ja/current/ScriptReference/ComputeBufferType.html    
+            //ComputeBuffer (int count, int stride, ComputeBufferType type);
+            //strudeはバッファ一つ値の型
+            //args = new uint[5] { 0, 0, 0, 0, 0 };
+            -----*/
             argsBuffer = new ComputeBuffer(1, args.Length * sizeof(uint), ComputeBufferType.IndirectArguments);
 
-
-            //---Vertex,FragmentShader
             bufferPropId = Shader.PropertyToID("buf");
-            timesPropId = Shader.PropertyToID("timer");
-            lifePropId = Shader.PropertyToID("lifeTime");
+            timesPropId = Shader.PropertyToID("times");
+            convergencePropId = Shader.PropertyToID("convergence");
+            viscosityPropId = Shader.PropertyToID("viscosity");
+            additionalVectorPropId = Shader.PropertyToID("additionalVector");
             modelMatrixPropId = Shader.PropertyToID("modelMatrix");
-            //---
+            valPropId = Shader.PropertyToID("val");
 
-
+            InitialCheck();
             UpdateBuffers();
-
         }
 
-        private void Update()
+        void InitialCheck()
         {
-            
-            timer += Time.deltaTime;
-            if (timer < 1.5)
-            {
-                return;
-            }
-            
-            times.x = Time.deltaTime;
-            times.y = Time.realtimeSinceStartup;
+            Assert.IsTrue(SystemInfo.graphicsShaderLevel >= 50, "Under the DirectCompute5.0 (DX11 GPU) doesn't work");
+            Assert.IsTrue(gpuThreads.x * gpuThreads.y * gpuThreads.z <= DirectCompute5_0.MAX_PROCESS, "Resolution is too heigh");
+            Assert.IsTrue(gpuThreads.x <= DirectCompute5_0.MAX_X, "THREAD_X is too large");
+            Assert.IsTrue(gpuThreads.y <= DirectCompute5_0.MAX_Y, "THREAD_Y is too large");
+            Assert.IsTrue(gpuThreads.z <= DirectCompute5_0.MAX_Z, "THREAD_Z is too large");
+            Assert.IsTrue(instanceCount <= DirectCompute5_0.MAX_PROCESS, "particleNumber is too large");
+        }
 
-            //if (timer <= idleTime) return; // just for idling
+        void Start()
+        {
+
+            Initialize();
+        }
+
+        void Update()
+        {
+            timer += Time.deltaTime;
+
+            if (timer <= idleTime)
+                return; // just for idling
 
             if (cachedInstanceCount != instanceCount)
                 UpdateBuffers();
 
 
-            //<------SubShader----------->
             instanceMaterial.SetPass(0);
             //StructuredBuffer<Params> buf;
             instanceMaterial.SetBuffer(bufferPropId, cBuffer);
             //matrixの転送
             //This property MUST be used instead of Transform.localToWorldMatrix, if you're setting shader parameters.
-            var render = GetComponent<Renderer>();
             instanceMaterial.SetMatrix(modelMatrixPropId, render.localToWorldMatrix);
-            instanceMaterial.SetFloat(timesPropId, timer);
-            //<-------------------------->
+            instanceMaterial.SetFloat("_val", server.val);
+
+            computeShaderInstance.SetVector(timesPropId, new Vector2(Time.deltaTime, timer));
+            computeShaderInstance.SetFloat(convergencePropId, convergence);
+            computeShaderInstance.SetFloat(viscosityPropId, viscosity);
+            computeShaderInstance.SetVector(additionalVectorPropId, additionalVector);
+            computeShaderInstance.SetFloat(valPropId, server.val);
 
 
-            //<------ComputeShader----------->
-            computeShader.SetVector("times", times);
             computeShaderInstance.SetBuffer(kernelMap[ComputeKernels.Emit], bufferPropId, cBuffer);
             computeShaderInstance.Dispatch(kernelMap[ComputeKernels.Emit], Mathf.CeilToInt((float)instanceCount / (float)gpuThreads.x), gpuThreads.y, gpuThreads.z);
 
             computeShaderInstance.SetBuffer(kernelMap[ComputeKernels.Iterator], bufferPropId, cBuffer);
             computeShaderInstance.Dispatch(kernelMap[ComputeKernels.Iterator], Mathf.CeilToInt((float)instanceCount / (float)gpuThreads.x), gpuThreads.y, gpuThreads.z);
-            //computeShaderInstance.setBuffer
-            
-            //Render
-            Graphics.DrawMeshInstancedIndirect(instanceMesh, SubMeshIndex, instanceMaterial, bounds, argsBuffer);
-        }
 
-        private void Start()
-        {
-            Initialize();
+            //************************* Render*************************************************
+            //必要な物 1:生成するmesh 2:subMeshIndex 3:適応shader　3:argsBuffer(index数，インスタンス数, args[2]:startIndex,args[3]:offSetIndex )
+            Graphics.DrawMeshInstancedIndirect(instanceMesh, 0, instanceMaterial, new Bounds(Vector3.zero, new Vector3(100f, 100f, 100f)), argsBuffer);
         }
 
         void UpdateBuffers()
@@ -200,25 +224,38 @@ namespace CurlNoise
             if (cBuffer != null)
                 cBuffer.Release();
 
+            //buffer生成
             cBuffer = new ComputeBuffer(instanceCount, Marshal.SizeOf(typeof(Params)));
+            //---中身の生成
             Params[] parameters = new Params[cBuffer.count];
-
-            for (int i = 0; i < instanceCount; i++)
-            {
-                var pos = UnityEngine.Random.insideUnitSphere * 15.0f;
-                var lifeTime = 5.0f;
-                var size = sizes[UnityEngine.Random.Range(0, sizes.Count)];
+            for (int i = 0; i < instanceCount; i++) {
                 var color = colors[UnityEngine.Random.Range(0, colors.Count)];
-
-                parameters[i] = new Params(UnityEngine.Random.insideUnitSphere, pos, lifeTime,size.startSize,size.endSize, color.startColor, color.endColor);
+                var size = sizes[UnityEngine.Random.Range(0, sizes.Count)];
+                var life = lives[UnityEngine.Random.Range(0, lives.Count)];//randomに配列の要素にアクセス
+                parameters[i] = new Params(UnityEngine.Random.insideUnitSphere * emitterSize, UnityEngine.Random.Range(life.minLife, life.maxLife), size.startSize, size.endSize, color.startColor, color.endColor);
             }
-
             cBuffer.SetData(parameters);
-            uint numIndices = (instanceMesh != null) ? (uint) instanceMesh.GetIndexCount(0) : 0;
+            //---
+            //index数を取得(三角形*数)
+            uint numIndices = (instanceMesh != null) ? (uint)instanceMesh.GetIndexCount(0) : 0;
+
+            //--args[0]:index数，args[1]:インスタンス生成数
             args[0] = numIndices;
-            args[1] = (uint) instanceCount;
+            args[1] = (uint)instanceCount;
             argsBuffer.SetData(args);
+            //--
             cachedInstanceCount = instanceCount;
+        }
+
+        void OnDisable()
+        {
+            if (cBuffer != null)
+                cBuffer.Release();
+            cBuffer = null;
+
+            if (argsBuffer != null)
+                argsBuffer.Release();
+            argsBuffer = null;
         }
     }
 }

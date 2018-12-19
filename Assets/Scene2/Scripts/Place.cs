@@ -9,6 +9,7 @@ public class Place : MonoBehaviour {
     public GameObject[] fonts;
     private Vector3[] pos;
 	private Vector3[] vel;
+    public Vector3[] culcPos;  //回転してる場合のfontの座標
     const int num = 72;
     float stepDegree;
     float radius = 40.0f;
@@ -35,7 +36,8 @@ public class Place : MonoBehaviour {
 		fonts = new GameObject[num];
 		pos = new Vector3[num];
 		vel = new Vector3[num];
-		stepDegree = 2.0f*Mathf.PI / num;
+        culcPos = new Vector3[num];
+        stepDegree = 2.0f*Mathf.PI / num;
 		rootPos = new Vector3[num];
 	}
 
@@ -52,9 +54,11 @@ public class Place : MonoBehaviour {
 	}
 	
 	void Update () {
+        RotateText();
+
         if (Time.frameCount % 240 == 1)
         {
-            mode = Random.Range(0.0f, 1.0f) > 0.5 ? 0 : 1;
+           //mode = Random.Range(0.0f, 1.0f) > 0.5 ? 0 : 1;
         }
         if (mode == 0)
         {
@@ -95,12 +99,15 @@ public class Place : MonoBehaviour {
         }
     }
 
+
+    //回転用関数
 	void RotateText()
 	{
 		for (int i = 0; i < fonts.Length; i++)
 		{
 			var t = Time.realtimeSinceStartup/5.0f;
 			pos[i] = new Vector3(radius * Mathf.Sin(stepDegree * i + t), 0.0f, radius * Mathf.Cos(stepDegree * i + t));
+            culcPos[i] = pos[i];
 			fonts[i].transform.position = pos[i];
 			rootPos[i] = pos[i];
 		}
