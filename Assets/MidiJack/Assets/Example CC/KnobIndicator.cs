@@ -13,6 +13,6 @@ public class KnobIndicator : MonoBehaviour
     void Update()
     {
         var s = MidiMaster.GetKnob(knobNumber);
-        transform.localScale = new Vector3(1, s, 1);
+        Debug.Log("knobNumber" + " : " + knobNumber + " " + "value" + ":" + s);
     }
 }

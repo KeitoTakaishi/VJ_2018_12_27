@@ -16,6 +16,7 @@ public class KnobIndicatorGroup : MonoBehaviour
     void Update()
     {
         var channels = MidiMaster.GetKnobNumbers();
+        //Debug.Log(channels + " : channels");
 
         // If a new chennel was added...
         if (indicators.Count != channels.Length)
@@ -26,6 +27,7 @@ public class KnobIndicatorGroup : MonoBehaviour
 
             // Initialize the indicator.
             var indicator = go.GetComponent<KnobIndicator>();
+            //加わるたびにchannelのidとしている
             indicator.knobNumber = channels[indicators.Count];
 
             // Add it to the indicator list.
