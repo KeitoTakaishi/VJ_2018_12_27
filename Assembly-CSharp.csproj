@@ -61,9 +61,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ImageEffect\Scripts\ImageEffectManager.cs" />
+    <Compile Include="Assets\ImageEffect\Scripts\Mosaic.cs" />
     <Compile Include="Assets\ManagerScene\Script\HTTPSender.cs" />
     <Compile Include="Assets\ManagerScene\Script\SceneController.cs" />
     <Compile Include="Assets\ManagerScene\Script\server.cs" />
+    <Compile Include="Assets\MidiJack\Assets\Example CC\KnobIndicator.cs" />
+    <Compile Include="Assets\MidiJack\Assets\Example CC\KnobIndicatorGroup.cs" />
+    <Compile Include="Assets\MidiJack\Assets\Example Delegate\DelegateTester.cs" />
+    <Compile Include="Assets\MidiJack\Assets\Example Note\NoteIndicator.cs" />
+    <Compile Include="Assets\MidiJack\Assets\Example Note\NoteIndicatorGroup.cs" />
+    <Compile Include="Assets\MidiJack\Assets\MidiJack\Midi.cs" />
+    <Compile Include="Assets\MidiJack\Assets\MidiJack\MidiDriver.cs" />
+    <Compile Include="Assets\MidiJack\Assets\MidiJack\MidiMaster.cs" />
+    <Compile Include="Assets\MidiJack\Assets\MidiJack\MidiStateUpdater.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -147,11 +158,14 @@
     <Compile Include="Assets\Scene1\Scripts\FollowScene1.cs" />
     <Compile Include="Assets\Scene1\Scripts\GeneratePipes.cs" />
     <Compile Include="Assets\Scene1\Scripts\MyMesh.cs" />
+    <Compile Include="Assets\Scene1\Scripts\ParticleController.cs" />
     <Compile Include="Assets\Scene1\Scripts\pipe.cs" />
+    <Compile Include="Assets\Scene1\Scripts\TextureSlide.cs" />
     <Compile Include="Assets\Scene1\Scripts\visualize.cs" />
     <Compile Include="Assets\Scene2\Scripts\CameraUtil.cs" />
     <Compile Include="Assets\Scene2\Scripts\CamS.cs" />
     <Compile Include="Assets\Scene2\Scripts\CreateCSV.cs" />
+    <Compile Include="Assets\Scene2\Scripts\FlowerParticleController.cs" />
     <Compile Include="Assets\Scene2\Scripts\GenerateMesh.cs" />
     <Compile Include="Assets\Scene2\Scripts\Place.cs" />
     <Compile Include="Assets\Scene2\Scripts\PostEffectApply.cs" />
@@ -211,6 +225,7 @@
     <None Include="Assets\Shaders\SimplexNoise3D.cginc" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\Example\z_UnlitTextureBlend.shader" />
+    <None Include="Assets\Scene1\Shaders\Standard.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\UI\CurveBackground.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_BaseWithDecals.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
@@ -253,6 +268,8 @@
     <None Include="Assets\ProCore\Polybrush\Shader\Example\z_UnlitTextureBlendAndSnow.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\UI\Trackball.shader" />
     <None Include="Assets\uOSC\ProjectSettings\ProjectVersion.txt" />
+    <None Include="Assets\Scene1\Shaders\TogeToge.shader" />
+    <None Include="Assets\MidiJack\ProjectSettings\ProjectVersion.txt" />
     <None Include="Assets\Shaders\SimplexNoise2D.cginc" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_StandardVertexColor.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.cginc" />
@@ -270,6 +287,7 @@
     <None Include="Assets\PostProcessing\Resources\Shaders\FXAA.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
+    <None Include="Assets\ImageEffect\Shader\Mosaic.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_DiffuseVertexColor.shader" />
     <None Include="Assets\ProCore\ProGrids\About\changelog.txt" />

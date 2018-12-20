@@ -5057,6 +5057,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolator: 0
   _target: {fileID: 16354792}
+  _targets:
+  - {fileID: 16354792}
   _interval: 30
   _anim:
     serializedVersion: 2
@@ -5064,7 +5066,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _radius: 15
+  _radius: 45
   isInterpolation: 1
 --- !u!114 &534669909
 MonoBehaviour:
@@ -5078,9 +5080,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _MatArraay:
-  - {fileID: 2100000, guid: 32c755a269a784e4983e4658e27f7692, type: 2}
-  - {fileID: 2100000, guid: 8d2ba51eb57c640808353282fbaea90b, type: 2}
-  - {fileID: 2100000, guid: cf027e8bbf00de849aea42dac76926bc, type: 2}
+  - {fileID: 2100000, guid: 2283c859fa86d4432ad49870216b953c, type: 2}
+  - {fileID: 2100000, guid: 3203ca4ac54857c4f8488811351cb706, type: 2}
+  - {fileID: 2100000, guid: 2e9d5edbb55314d9193ad324966080d9, type: 2}
   IntervalFrameNum: 120
 --- !u!1 &688346684
 GameObject:
@@ -9970,8 +9972,8 @@ MonoBehaviour:
   lives:
   - minLife: 0.5
     maxLife: 2.2
-  additionalVector: {x: 0, y: 0, z: -3}
-  emitterSize: 10
+  additionalVector: {x: 0, y: 5, z: 0}
+  emitterSize: 35
   convergence: 4
   viscosity: 5
   instanceMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}

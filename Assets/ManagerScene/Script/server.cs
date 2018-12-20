@@ -21,7 +21,7 @@ namespace uOSC
 
         void OnDataReceived(Message message)
         {
-            if (message.address.Contains("chan2")) {
+            if (message.address.Contains("low")) {
                 foreach (var value in message.values) {
                     _val = float.Parse(value.GetString());
                 }

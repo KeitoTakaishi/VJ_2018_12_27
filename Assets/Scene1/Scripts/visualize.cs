@@ -14,7 +14,7 @@ public class visualize : MonoBehaviour {
 	
 	void Update () {
         //geom.SetFloat("_Height", _server.val);
-        geom.SetFloat("_Height", uOSC.server.val);
+        geom.SetFloat("_Height", uOSC.server.val / 3.0f);
         geom.SetInt("_ID", this.GetInstanceID());
         //Debug.Log("value :" + _server.val);
 	}

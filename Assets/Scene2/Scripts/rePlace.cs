@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
+using uOSC;
 
 public class rePlace : MonoBehaviour {
     
@@ -60,8 +61,13 @@ public class rePlace : MonoBehaviour {
         }
 
 
+        for (int i = 0; i < childNum; i++) {
+            child[i].transform.localScale = new Vector3(server.val / 5.0f, server.val / 5.0f, server.val / 5.0f);
+        }
 
-	}
+
+
+    }
     
     //縦書くに並べるためのFunc
     //parentPosが基準になっている座標

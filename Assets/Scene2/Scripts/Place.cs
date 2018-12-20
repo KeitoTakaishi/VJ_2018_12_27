@@ -54,11 +54,11 @@ public class Place : MonoBehaviour {
 	}
 	
 	void Update () {
-        RotateText();
-
+        //RotateText();
+        
         if (Time.frameCount % 240 == 1)
         {
-           //mode = Random.Range(0.0f, 1.0f) > 0.5 ? 0 : 1;
+           mode = Random.Range(0.0f, 1.0f) > 0.5 ? 0 : 1;
         }
         if (mode == 0)
         {
