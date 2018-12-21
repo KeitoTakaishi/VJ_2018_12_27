@@ -62,8 +62,8 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Height: 4.9263067
-    - _ID: 26100
+    - _Height: 0
+    - _ID: 77078
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1

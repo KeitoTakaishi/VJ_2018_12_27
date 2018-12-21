@@ -27,7 +27,7 @@ namespace uOSC
                 }
             }
 
-            Debug.Log(_val);
+            //Debug.Log(_val);
         }
     }
 

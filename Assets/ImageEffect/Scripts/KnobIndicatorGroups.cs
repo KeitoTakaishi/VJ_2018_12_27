@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MidiJack;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class KnobIndicatorGroups : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class KnobIndicatorGroups : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(this);
         indicators = new List<KnobIndicator>();
     }
 
@@ -37,9 +39,15 @@ public class KnobIndicatorGroups : MonoBehaviour
             indicators.Add(indicator);
         }
 
-        for(var i = 0; i < indicators.Count; i++) {
+
+        for (var i = 0; i < indicators.Count; i++) {
             knobVal[i] = MidiMaster.GetKnob(indicators[i].knobNumber);
-            knobMessages[i].text = knobVal[i].ToString();
+            Debug.Log(i + " : " + knobVal[i]);
+            if (SceneManager.GetActiveScene().name == "ManagerScene") {
+                knobMessages[i].text = knobVal[i].ToString();
+            }
         }
+
+
     }
 }

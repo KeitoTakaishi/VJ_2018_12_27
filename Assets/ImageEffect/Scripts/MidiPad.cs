@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using MidiJack;
+using UnityEngine.SceneManagement;
+
 
 public class MidiPad : MonoBehaviour
 {
@@ -23,11 +25,15 @@ public class MidiPad : MonoBehaviour
         for (int i = 36; i < 44; i++) {
             if (MidiMaster.GetKeyDown(i)) {
                 string podMessage = "ID" + i + ":" + "-Pressed";
+            if (SceneManager.GetActiveScene().name == "ManagerScene") {
                 padMessages[i % 36].text = podMessage;
+            }
                 isPressed[i % 36] = true;
             } else {
                 string podMessage = "ID" + i + ":" + "-Do not Pressed";
+            if (SceneManager.GetActiveScene().name == "ManagerScene") {
                 padMessages[i % 36].text = podMessage;
+            }
                 isPressed[i % 36] = false;
             }
         }

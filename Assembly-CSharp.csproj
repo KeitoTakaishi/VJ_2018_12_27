@@ -60,14 +60,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ImageEffect\KMath\Easing.cs" />
+    <Compile Include="Assets\ImageEffect\KMath\EasingData.cs" />
+    <Compile Include="Assets\ImageEffect\KMath\Utility.cs" />
+    <Compile Include="Assets\ImageEffect\Scripts\Distortion.cs" />
     <Compile Include="Assets\ImageEffect\Scripts\ImageEffectManager.cs" />
     <Compile Include="Assets\ImageEffect\Scripts\KnobIndicator.cs" />
     <Compile Include="Assets\ImageEffect\Scripts\KnobIndicatorGroups.cs" />
     <Compile Include="Assets\ImageEffect\Scripts\MidiPad.cs" />
     <Compile Include="Assets\ImageEffect\Scripts\Mosaic.cs" />
-    <Compile Include="Assets\KMath\Easing.cs" />
-    <Compile Include="Assets\KMath\EasingData.cs" />
-    <Compile Include="Assets\KMath\Utility.cs" />
+    <Compile Include="Assets\ImageEffect\Scripts\RadiationBlur.cs" />
     <Compile Include="Assets\ManagerScene\Script\HTTPSender.cs" />
     <Compile Include="Assets\ManagerScene\Script\SceneController.cs" />
     <Compile Include="Assets\ManagerScene\Script\server.cs" />
@@ -257,8 +259,10 @@
     <None Include="Assets\Shaders\FontHDR.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\FXAA3.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.shader" />
+    <None Include="Assets\ImageEffect\Shader\Distortion.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
     <None Include="Assets\Shaders\Dissolve.shader" />
+    <None Include="Assets\ImageEffect\Shader\RadiationBlur.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_VertexBillboard.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_TextureBlender.shader" />
     <None Include="Assets\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
@@ -271,6 +275,7 @@
     <None Include="Assets\Scene1\Shaders\GeometryShader_.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Common.cginc" />
     <None Include="Assets\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
+    <None Include="Assets\ImageEffect\Shader\Libs\SimplexNoiseGrad3D.cginc" />
     <None Include="Assets\ProCore\Polybrush\Shader\Example\z_UnlitTextureBlendAndSnow.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\UI\Trackball.shader" />
     <None Include="Assets\uOSC\ProjectSettings\ProjectVersion.txt" />
@@ -311,6 +316,7 @@
     <None Include="Assets\Scene3\Resouces\SimplexNoise3D.cginc" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_Overlay.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
+    <None Include="Assets\ImageEffect\Shader\Libs\Utils2D.cginc" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_TextureBlendModulate_SfSrc.shader" />
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
       <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>

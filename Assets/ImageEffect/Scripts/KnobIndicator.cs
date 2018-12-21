@@ -10,6 +10,7 @@ public class KnobIndicators : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(this);
         indicators = new List<KnobIndicator>();
     }
 
