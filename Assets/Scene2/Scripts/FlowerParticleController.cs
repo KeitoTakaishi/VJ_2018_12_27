@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using uOSC;
+using MidiJack;
 
 public class FlowerParticleController : MonoBehaviour {
 
@@ -23,9 +24,9 @@ public class FlowerParticleController : MonoBehaviour {
 	}
 	
 	void Update () {
-        //ps1.emission = 
-        //ps2.startSpeed = server.val;
-        //ps3.startSpeed = server.val;
-        //ps4.startSpeed = server.val;
+        ps1.startSpeed = KnobIndicatorGroups.knobVal[0] * 10.0f;
+        ps2.startSpeed = KnobIndicatorGroups.knobVal[1] * 10.0f;
+        ps3.startSpeed = KnobIndicatorGroups.knobVal[2] * 10.0f;
+        ps4.startSpeed = KnobIndicatorGroups.knobVal[3] * 10.0f;
     }
 }

@@ -97,7 +97,7 @@ MonoBehaviour:
       logMin: -8
       logMax: 4
   bloom:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       bloom:
         intensity: 0.23
@@ -134,7 +134,7 @@ MonoBehaviour:
       colorWheels:
         mode: 1
         log:
-          slope: {r: 0.55965316, g: 0.7669134, b: 1, a: 0}
+          slope: {r: 0.9039236, g: 0.9534752, b: 1, a: 0}
           power: {r: 0.95461446, g: 1, b: 0.9659606, a: 0}
           offset: {r: 1, g: 1, b: 1, a: 0}
         linear:

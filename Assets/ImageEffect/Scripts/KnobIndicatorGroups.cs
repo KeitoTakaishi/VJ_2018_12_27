@@ -42,9 +42,9 @@ public class KnobIndicatorGroups : MonoBehaviour
 
         for (var i = 0; i < indicators.Count; i++) {
             knobVal[i] = MidiMaster.GetKnob(indicators[i].knobNumber);
-            Debug.Log(i + " : " + knobVal[i]);
+
             if (SceneManager.GetActiveScene().name == "ManagerScene") {
-                knobMessages[i].text = knobVal[i].ToString();
+                knobMessages[i].text = "Konb" + i + " : " + knobVal[i].ToString();
             }
         }
 

@@ -70,6 +70,7 @@
     <Compile Include="Assets\ImageEffect\Scripts\MidiPad.cs" />
     <Compile Include="Assets\ImageEffect\Scripts\Mosaic.cs" />
     <Compile Include="Assets\ImageEffect\Scripts\RadiationBlur.cs" />
+    <Compile Include="Assets\ManagerScene\Script\FPSViewer.cs" />
     <Compile Include="Assets\ManagerScene\Script\HTTPSender.cs" />
     <Compile Include="Assets\ManagerScene\Script\SceneController.cs" />
     <Compile Include="Assets\ManagerScene\Script\server.cs" />
@@ -163,6 +164,7 @@
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_SceneMeshRender.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Util.cs" />
     <Compile Include="Assets\ProCore\ProGrids\MonoBehaviour\pg_IgnoreSnap.cs" />
+    <Compile Include="Assets\Scene1\Scripts\DancerLocation.cs" />
     <Compile Include="Assets\Scene1\Scripts\FollowScene1.cs" />
     <Compile Include="Assets\Scene1\Scripts\GeneratePipes.cs" />
     <Compile Include="Assets\Scene1\Scripts\MyMesh.cs" />
@@ -188,6 +190,7 @@
     <Compile Include="Assets\Scene2\SimpleJSON\SimpleJSONBinary.cs" />
     <Compile Include="Assets\Scene2\SimpleJSON\SimpleJSONUnity.cs" />
     <Compile Include="Assets\Scene3\Scripts\CurlNoiseParticle.cs" />
+    <Compile Include="Assets\Scene3\Scripts\FonsParticle.cs" />
     <Compile Include="Assets\Scene3\Scripts\PrismMesh.cs" />
     <Compile Include="Assets\Scene3\Scripts\PrismMove.cs" />
     <Compile Include="Assets\Scene3\Scripts\Spawner.cs" />
@@ -243,6 +246,7 @@
     <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ACES.cginc" />
     <None Include="Assets\Shaders\NormalImage.shader" />
+    <None Include="Assets\Scene3\Shaders\Dissolve.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_TextureBlendMobile_SfSrc.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
