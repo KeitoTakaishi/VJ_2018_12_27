@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -295,7 +295,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: knob7
 --- !u!222 &254357976
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -389,9 +389,12 @@ GameObject:
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
+  - component: {fileID: 534669910}
   - component: {fileID: 534669908}
   - component: {fileID: 534669909}
-  - component: {fileID: 534669910}
+  - component: {fileID: 534669907}
+  - component: {fileID: 534669911}
+  - component: {fileID: 534669912}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -473,6 +476,20 @@ MonoBehaviour:
   scale: 64
   isCircle: 0
   m_Shader: {fileID: 4800000, guid: f2ad58bb4c9334d4abdb8bec8a4a0c97, type: 3}
+--- !u!114 &534669907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5f3d9a14dc6ff41bdb10b7f9f0142a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalReflect: 0
+  verticalReflect: 0
+  m_Shader: {fileID: 4800000, guid: 66db82b71e31948448ec8926204f1973, type: 3}
 --- !u!114 &534669908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,6 +531,36 @@ MonoBehaviour:
   noiseSpeed: {x: 1, y: 1, z: 1}
   power: 0.1
   m_Shader: {fileID: 4800000, guid: 25481846a221c8942a41caa289498b66, type: 3}
+--- !u!114 &534669911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae53313eb8763a4eb3ff716fc295cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 0.5
+  invert: 0
+  easeType: 2
+  noiseScale: 1000
+  m_Shader: {fileID: 0}
+--- !u!114 &534669912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d17b90019a92df4d84c395d02cc77ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shiftPower: 1
+  noiseSpeed: 1
+  m_Shader: {fileID: 0}
 --- !u!1 &567943272
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +628,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: knob2
 --- !u!222 &567943275
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -656,7 +703,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: knob6
 --- !u!222 &604922762
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -830,7 +877,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: knob0
 --- !u!222 &732331052
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1020,7 +1067,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: knob4
 --- !u!222 &813584183
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1757,10 +1804,14 @@ MonoBehaviour:
   mosaic: {fileID: 534669906}
   radiationBlur: {fileID: 534669909}
   distortion: {fileID: 534669910}
+  reflection: {fileID: 534669907}
+  randomInvert: {fileID: 534669911}
+  rgbShift: {fileID: 534669912}
   maxMosaiceScale: 64
-  effectTime: 0.1
-  maxRadiationBlurPower: 32
+  effectTime: 0.75
+  maxRadiationBlurPower: 64
   maxDistortionPower: 0.1
+  maxRGBShiftPower: 16
 --- !u!4 &1544803707
 Transform:
   m_ObjectHideFlags: 0
@@ -2114,7 +2165,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: knob1
 --- !u!222 &1768135137
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2414,7 +2465,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: knob5
 --- !u!222 &1926710468
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2489,7 +2540,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: knob3
 --- !u!222 &1981773690
 CanvasRenderer:
   m_ObjectHideFlags: 0

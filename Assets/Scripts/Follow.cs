@@ -33,6 +33,7 @@ public class Follow : MonoBehaviour
     [SerializeField] private AnimationCurve _anim;
     [SerializeField] private float _radius = 15.0f;
     [SerializeField] private bool isInterpolation = true;
+    [SerializeField] private bool isUnderGround = false;
 
     public Interpolator interpolator
     {
@@ -120,9 +121,11 @@ public class Follow : MonoBehaviour
     {
 
         var _nextPos = UnityEngine.Random.insideUnitSphere * _radius;
-        if (_nextPos.y < 0)
-            _nextPos.y = UnityEngine.Random.Range(0.0f, _radius / 2.0f);
-        return _nextPos;
+        if (!isUnderGround) {
+            if (_nextPos.y < 0)
+                _nextPos.y = UnityEngine.Random.Range(0.0f, _radius / 2.0f);
+        }
+            return _nextPos;
     }
 
     protected virtual void LookAt()
@@ -187,5 +190,11 @@ public class Follow : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C)) {
             Camera.main.orthographic = !Camera.main.orthographic;
         }
+    }
+
+    void Rolling()
+    {
+        Vector3 forword = transform.forward;
+        
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -280,6 +280,9 @@ GameObject:
   - component: {fileID: 447759157}
   - component: {fileID: 447759156}
   - component: {fileID: 447759155}
+  - component: {fileID: 447759159}
+  - component: {fileID: 447759158}
+  - component: {fileID: 447759160}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -310,7 +313,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.32217872, g: 0.35950622, b: 0.3773585, a: 0}
+  m_BackGroundColor: {r: 0.65882355, g: 0.8784314, b: 0.8697439, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -413,6 +416,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _radius: 50
   isInterpolation: 1
+  isUnderGround: 1
 --- !u!114 &447759154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,6 +475,50 @@ MonoBehaviour:
   scale: 1
   isCircle: 0
   m_Shader: {fileID: 4800000, guid: f2ad58bb4c9334d4abdb8bec8a4a0c97, type: 3}
+--- !u!114 &447759158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 447759146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae53313eb8763a4eb3ff716fc295cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 0.5
+  invert: 0
+  easeType: 2
+  noiseScale: 1000
+  m_Shader: {fileID: 0}
+--- !u!114 &447759159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 447759146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5f3d9a14dc6ff41bdb10b7f9f0142a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalReflect: 0
+  verticalReflect: 0
+  m_Shader: {fileID: 4800000, guid: 66db82b71e31948448ec8926204f1973, type: 3}
+--- !u!114 &447759160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 447759146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d17b90019a92df4d84c395d02cc77ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shiftPower: 1
+  noiseSpeed: 1
+  m_Shader: {fileID: 0}
 --- !u!1 &605154670
 GameObject:
   m_ObjectHideFlags: 0
@@ -19361,10 +19409,14 @@ MonoBehaviour:
   mosaic: {fileID: 447759157}
   radiationBlur: {fileID: 447759156}
   distortion: {fileID: 447759155}
+  reflection: {fileID: 447759159}
+  randomInvert: {fileID: 447759158}
+  rgbShift: {fileID: 447759160}
   maxMosaiceScale: 32
   effectTime: 0.75
   maxRadiationBlurPower: 32
   maxDistortionPower: 0.1
+  maxRGBShiftPower: 16
 --- !u!4 &1933074552
 Transform:
   m_ObjectHideFlags: 0

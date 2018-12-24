@@ -14,6 +14,8 @@ public class ImageEffectManager : MonoBehaviour {
     public Mosaic mosaic;
     public RadiationBlur radiationBlur;
     public Distortion distortion;
+    public Reflection reflection;
+    public RandomInvert randomInvert;
 
 
     public float maxMosaiceScale = 32;
@@ -53,23 +55,32 @@ public class ImageEffectManager : MonoBehaviour {
         }
     }
 
+    void ActionReflectionLR()
+    {
+        reflection.horizontalReflect = !reflection.horizontalReflect;
+    }
+
+    void ActionReflectionTB()
+    {
+        reflection.verticalReflect = !reflection.verticalReflect;
+    }
+
     void MidiChecker()
     {
         Debug.Log(MidiPad.isPressed[0]);
         if (MidiPad.isPressed[0]) {
-            Debug.Log("Mosaic");
             StartCoroutine(ActionMosaic());
         }else if (MidiPad.isPressed[1]) {
             StartCoroutine(ActionRadiationBlur());
         }else if (MidiPad.isPressed[2]) {
             StartCoroutine(ActionDistortion());
         }else if (MidiPad.isPressed[3]) {
-
+            ActionReflectionLR();
         }else if (MidiPad.isPressed[4]) {
-
+            ActionReflectionTB();
         }else if (MidiPad.isPressed[5]) {
-
-        }else if (MidiPad.isPressed[6]) {
+            randomInvert.StartInvert();
+        } else if (MidiPad.isPressed[6]) {
 
         }else if (MidiPad.isPressed[7]) {
 
@@ -83,8 +94,12 @@ public class ImageEffectManager : MonoBehaviour {
         mosaic.ChangeCircleFlag();
         //mosaic.enabled = false;
         radiationBlur.power = 0;
+
         distortion.enabled = true;
         distortion.power = 0;
+
+        reflection.horizontalReflect = false;
+        reflection.verticalReflect = false;
     }
 
 

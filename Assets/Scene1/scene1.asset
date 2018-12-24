@@ -113,19 +113,19 @@ MonoBehaviour:
     m_Settings:
       tonemapping:
         tonemapper: 2
-        neutralBlackIn: 0.02
-        neutralWhiteIn: 10
-        neutralBlackOut: 0
+        neutralBlackIn: -0.01
+        neutralWhiteIn: 7.67
+        neutralBlackOut: 0.006
         neutralWhiteOut: 10
         neutralWhiteLevel: 5.3
-        neutralWhiteClip: 10
+        neutralWhiteClip: 7.8
       basic:
         postExposure: 0
         temperature: 0
         tint: 0
         hueShift: 0
-        saturation: 1
-        contrast: 1
+        saturation: 2
+        contrast: 1.51
       channelMixer:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
       colorWheels:
         mode: 1
         log:
-          slope: {r: 0.9039236, g: 0.9534752, b: 1, a: 0}
+          slope: {r: 0.868681, g: 1, b: 0.834821, a: 0}
           power: {r: 0.95461446, g: 1, b: 0.9659606, a: 0}
           offset: {r: 1, g: 1, b: 1, a: 0}
         linear:

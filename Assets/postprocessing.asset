@@ -100,8 +100,8 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.06
-        threshold: 0.4
+        intensity: 0.54
+        threshold: 0.35
         softKnee: 0.5
         radius: 4
         antiFlicker: 0
@@ -138,8 +138,8 @@ MonoBehaviour:
           power: {r: 0.83154494, g: 0.90809345, b: 1, a: 0}
           offset: {r: 0.36985016, g: 0, b: 1, a: 0}
         linear:
-          lift: {r: 0.36798763, g: 0, b: 1, a: 0}
-          gamma: {r: 1, g: 1, b: 1, a: 0}
+          lift: {r: 0.03653598, g: 0.7039768, b: 1, a: 0}
+          gamma: {r: 0.99387723, g: 1, b: 0.96823764, a: 0}
           gain: {r: 1, g: 1, b: 1, a: 0}
       curves:
         master:
@@ -308,12 +308,12 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       spectralTexture: {fileID: 0}
-      intensity: 0.1
+      intensity: 0.064
   grain:
     m_Enabled: 1
     m_Settings:
       colored: 1
-      intensity: 0.38
+      intensity: 0.659
       size: 1
       luminanceContribution: 0.8
   vignette:
@@ -322,7 +322,7 @@ MonoBehaviour:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.42
+      intensity: 0.428
       smoothness: 0.2
       roundness: 1
       mask: {fileID: 0}

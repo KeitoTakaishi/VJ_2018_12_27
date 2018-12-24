@@ -70,6 +70,9 @@
     <Compile Include="Assets\ImageEffect\Scripts\MidiPad.cs" />
     <Compile Include="Assets\ImageEffect\Scripts\Mosaic.cs" />
     <Compile Include="Assets\ImageEffect\Scripts\RadiationBlur.cs" />
+    <Compile Include="Assets\ImageEffect\Scripts\RandomInvert.cs" />
+    <Compile Include="Assets\ImageEffect\Scripts\Reflection.cs" />
+    <Compile Include="Assets\ImageEffect\Scripts\RGBShift.cs" />
     <Compile Include="Assets\ManagerScene\Script\FPSViewer.cs" />
     <Compile Include="Assets\ManagerScene\Script\HTTPSender.cs" />
     <Compile Include="Assets\ManagerScene\Script\SceneController.cs" />
@@ -198,7 +201,6 @@
     <Compile Include="Assets\Scripts\FoVEffect.cs" />
     <Compile Include="Assets\Scripts\generate.cs" />
     <Compile Include="Assets\Scripts\MyMesh.cs" />
-    <Compile Include="Assets\SubSceneCamera.cs" />
     <Compile Include="Assets\uOSC\Assets\uOSC\Examples\Scripts\ClientBlobTest.cs" />
     <Compile Include="Assets\uOSC\Assets\uOSC\Examples\Scripts\ClientBundleTest.cs" />
     <Compile Include="Assets\uOSC\Assets\uOSC\Examples\Scripts\ClientTest.cs" />
@@ -250,6 +252,7 @@
     <None Include="Assets\ProCore\Polybrush\Shader\z_TextureBlendMobile_SfSrc.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
+    <None Include="Assets\ImageEffect\Shader\RGBShift.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_TriPlanarBlendLegacy.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Uber.shader" />
@@ -274,6 +277,7 @@
     <None Include="Assets\ProCore\Polybrush\Shader\z_TextureBlendBmp.shader" />
     <None Include="Assets\Scene3\Resouces\Instancing_ 1.compute" />
     <None Include="Assets\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
+    <None Include="Assets\ImageEffect\Shader\Reflection.shader" />
     <None Include="Assets\Shaders\test.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\Example\z_UnlitTextureBlend_WithMetaData.shader" />
     <None Include="Assets\Scene1\Shaders\GeometryShader_.shader" />
@@ -319,8 +323,9 @@
     <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
     <None Include="Assets\Scene3\Resouces\SimplexNoise3D.cginc" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_Overlay.shader" />
+    <None Include="Assets\ImageEffect\Shader\RandomInvert.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
-    <None Include="Assets\ImageEffect\Shader\Libs\Utils2D.cginc" />
+    <None Include="Assets\ImageEffect\Shader\Utils2D.cginc" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_TextureBlendModulate_SfSrc.shader" />
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
       <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
