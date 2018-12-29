@@ -10,7 +10,7 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1993316139624994}
-  m_IsPrefabAsset: 1
+  m_IsPrefabAsset: 0
 --- !u!1 &1052699216473430
 GameObject:
   m_ObjectHideFlags: 1

@@ -199,7 +199,7 @@ namespace CurlNoise
             //matrixの転送
             //This property MUST be used instead of Transform.localToWorldMatrix, if you're setting shader parameters.
             instanceMaterial.SetMatrix(modelMatrixPropId, render.localToWorldMatrix);
-            instanceMaterial.SetFloat("_val", server.val);
+            instanceMaterial.SetFloat("_val", server.val > 5.0f ? 5.0f : server.val);
 
             computeShaderInstance.SetVector(timesPropId, new Vector2(Time.deltaTime, timer));
             computeShaderInstance.SetFloat(convergencePropId, convergence);

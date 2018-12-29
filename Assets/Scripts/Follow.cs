@@ -75,7 +75,11 @@ public class Follow : MonoBehaviour
     void Start()
     {
         _nextPos = new Vector3();
-        _curPos = new Vector3();
+        //_curPos = new Vector3();
+        _curPos = UnityEngine.Random.insideUnitSphere * 10.0f;
+        var index = UnityEngine.Random.Range(0, _targets.Length);
+        _target = _targets[index];
+        transform.LookAt(_target);
     }
 
     private void Update()

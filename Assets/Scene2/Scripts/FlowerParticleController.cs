@@ -24,9 +24,11 @@ public class FlowerParticleController : MonoBehaviour {
 	}
 	
 	void Update () {
-        ps1.startSpeed = KnobIndicatorGroups.knobVal[0] * 10.0f;
-        ps2.startSpeed = KnobIndicatorGroups.knobVal[1] * 10.0f;
-        ps3.startSpeed = KnobIndicatorGroups.knobVal[2] * 10.0f;
-        ps4.startSpeed = KnobIndicatorGroups.knobVal[3] * 10.0f;
+        if (Input.GetKeyDown(KeyCode.L)) {
+            ps1.Play();
+            ps2.Play();
+            ps3.Play();
+            ps4.Play();
+        }
     }
 }

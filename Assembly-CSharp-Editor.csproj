@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{7B806A4D-7DA7-8853-94CE-D7B07F7BA151}</ProjectGuid>
+    <ProjectGuid>{C7298340-80A3-A0EE-10B0-DFAF300F056A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -149,19 +149,19 @@
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_Preferences.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_ToggleContent.cs" />
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ_2018_12_27/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ_2018_12_27/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ_2018_12_27/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ_2018_12_27/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ_2018_12_27/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity2018.2.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -802,7 +802,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{FCA03620-82BA-45A2-EE97-D430ED64A459}</Project>
+      <Project>{FE672E07-4E9A-CE55-76C7-17D3897F9A0C}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
   </ItemGroup>

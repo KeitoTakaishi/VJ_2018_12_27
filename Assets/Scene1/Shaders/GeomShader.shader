@@ -3,6 +3,7 @@
     Properties
     {
         _Height("Height", float) = 5.0
+        _High("_High", float) = 5.0
         [HDR]_BottomColor("Bottom Color", Color) = (1.0, 0.0, 0.0, 1.0)
         [HDR]_TopColor("Top Color", Color) = (0.0, 0.0, 1.0, 1.0)
         _ID("Id", Int) = 0
@@ -31,6 +32,7 @@
     {
         float4 pos : SV_POSITION;
         float3 normal : NORMAL;
+ 
     };
 
     struct g2f
@@ -38,6 +40,8 @@
         float4 pos : SV_POSITION;
         float4 col : COLOR;
     };
+
+    
 
     v2g vert(appdata_full v)
     {
@@ -54,6 +58,7 @@
 
     int _ID;
     float _vol[31];
+    float _High;
     [maxvertexcount(9)]
     void geom(triangle v2g input[3], inout TriangleStream<g2f> outStream)
         //void geom(triangle v2g input[3], inout LineStream<g2f> outStream)
@@ -67,10 +72,15 @@
         float3 _c = p0 + p1 + p2;
         float v = _vol[0];
 
-
-        //float4 c = float4(0.0f, 0.0f, -_Height, 1.0f) + (p0 + p1 + p2) * 0.33333;
-        //float4 c = float4(float3(normal), 1.0f)* _vol[0] * 1.5 * rand(float2(_c.x + _ID * 1000.0*rand(float2(floor(_Time.x), floor(_Time.x))), _c.y + sin(_Time.w))) + (p0 + p1 + p2) / 3.0f;
-        float4 c = float4(float3(normal), 1.0f) * _Height*2.0 * rand(float2(_c.x + _ID * 1000.0*rand(float2(floor(_Time.x), floor(_Time.x))), _c.y + sin(_Time.w))) + (p0 + p1 + p2) / 3.0f;
+        
+        //float4 c = float4(float3(normal), 1.0f) * _Height*2.0 * rand(float2(_c.x + _ID * 1000.0*rand(float2(floor(_Time.x), floor(_Time.x))), _c.y + sin(_Time.w))) + (p0 + p1 + p2) / 3.0f;
+        //float r = rand(float2(floor(_c.x * 100.0)/100.0, _Time.z)) > 0.5 ? 1.0 : 0.0;
+        float r = frac(_c.x + _Time.y);
+        r += rand(float2(_c.x, _c.y)) * 0.5;
+        r = r > 0.95 ? r : 0.0;
+        
+        _Height = _Height > 1.0 ? 1.0 : _Height;
+        float4 c = float4(float3(normal * _Height * r), 1.0f);
 
 
         g2f out0;
@@ -87,7 +97,9 @@
 
         g2f o;
         o.pos = UnityObjectToClipPos(c);
-        o.col = _TopColor;
+        //o.col = _TopColor;
+        //o.col = fixed4(_High, _High, _High, 1.0);
+        o.col = fixed4 (0.0, _High, _High +0.1, 1.0);
 
         // bottom
         /* outStream.Append(out0);

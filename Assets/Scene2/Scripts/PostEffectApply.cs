@@ -19,6 +19,7 @@ public class PostEffectApply : MonoBehaviour
     private int curentId = 0;
     private RenderTexture _FrameBuffer;
     private int FrameCount = 0;
+    private int id = 0;
     void Start()
     {
         mat = _MatArraay[curentId];
@@ -33,7 +34,9 @@ public class PostEffectApply : MonoBehaviour
         {
             //curentId = (curentId + 1) % _MatArraay.Length;
             curentId = (int)Random.Range(0, _MatArraay.Length);
-            mat = _MatArraay[curentId];
+            //mat = _MatArraay[curentId];
+            mat = _MatArraay[id];
+            id = (id + 1) % _MatArraay.Length; 
         }
 
         blur_vec = new Vector2(Random.RandomRange(0.0f, 0.01f), Random.RandomRange(0.0f, 0.01f));

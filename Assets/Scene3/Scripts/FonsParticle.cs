@@ -15,7 +15,7 @@ public class FonsParticle : MonoBehaviour {
 	}
 	
 	void Update () {
-        if (MidiPad.isPressed[4]) {
+        if (MidiPad.isPressed[7]) {
             ps[0].Play();
         }else if (MidiPad.isPressed[5]) {
             ps[1].Play();

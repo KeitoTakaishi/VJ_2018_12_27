@@ -56,8 +56,12 @@
                     float3 normal = (input[0].normal + input[1].normal + input[2].normal) / 3.0;
                     normal = normalize(normal);
 
-                    float3 _c = p0 + p1 + p2;
-                    float4 c = float4(float3(normal), 1.0f) * _Height*2.0 * rand(float2(_c.x + _ID * 1000.0*rand(float2(floor(_Time.x), floor(_Time.x))), _c.y+sin(_Time.w))) + (p0 + p1 + p2) / 3.0f;
+                    float3 center = p0 + p1 + p2;
+                    //float4 c = float4(float3(normal), 1.0f) * _Height*2.0 * rand(float2(_c.x + _ID * 1000.0*rand(float2(floor(_Time.x), floor(_Time.x))), _c.y+sin(_Time.w))) + (p0 + p1 + p2) / 3.0f;
+                    
+                    float r = rand(float2(center.x*100.0 + center.z*100.0,  _Time.x)) > 0.75 ? 1.0 : 0.0;
+                    r = 0.0;
+                    float4 c = float4(float3(normal.x * _Height * r, normal.y * _Height * r, normal.z * _Height * r), 1.0);
 
 
                     g2f out0;

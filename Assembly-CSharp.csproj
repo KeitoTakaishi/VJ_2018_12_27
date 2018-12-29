@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{FCA03620-82BA-45A2-EE97-D430ED64A459}</ProjectGuid>
+    <ProjectGuid>{FE672E07-4E9A-CE55-76C7-17D3897F9A0C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -75,6 +75,7 @@
     <Compile Include="Assets\ImageEffect\Scripts\RGBShift.cs" />
     <Compile Include="Assets\ManagerScene\Script\FPSViewer.cs" />
     <Compile Include="Assets\ManagerScene\Script\HTTPSender.cs" />
+    <Compile Include="Assets\ManagerScene\Script\PostProcessManager.cs" />
     <Compile Include="Assets\ManagerScene\Script\SceneController.cs" />
     <Compile Include="Assets\ManagerScene\Script\server.cs" />
     <Compile Include="Assets\ManagerScene\Script\testParticle.cs" />
@@ -189,10 +190,12 @@
     <Compile Include="Assets\Scene2\Scripts\TargetTracer.cs" />
     <Compile Include="Assets\Scene2\Scripts\TestMeshOpe.cs" />
     <Compile Include="Assets\Scene2\Scripts\TextTransform.cs" />
+    <Compile Include="Assets\Scene2\Scripts\TrailPartilcleController.cs" />
     <Compile Include="Assets\Scene2\SimpleJSON\SimpleJSON.cs" />
     <Compile Include="Assets\Scene2\SimpleJSON\SimpleJSONBinary.cs" />
     <Compile Include="Assets\Scene2\SimpleJSON\SimpleJSONUnity.cs" />
     <Compile Include="Assets\Scene3\Scripts\CurlNoiseParticle.cs" />
+    <Compile Include="Assets\Scene3\Scripts\FadeOut.cs" />
     <Compile Include="Assets\Scene3\Scripts\FonsParticle.cs" />
     <Compile Include="Assets\Scene3\Scripts\PrismMesh.cs" />
     <Compile Include="Assets\Scene3\Scripts\PrismMove.cs" />
@@ -201,6 +204,7 @@
     <Compile Include="Assets\Scripts\FoVEffect.cs" />
     <Compile Include="Assets\Scripts\generate.cs" />
     <Compile Include="Assets\Scripts\MyMesh.cs" />
+    <Compile Include="Assets\Scripts\TentaclePs.cs" />
     <Compile Include="Assets\uOSC\Assets\uOSC\Examples\Scripts\ClientBlobTest.cs" />
     <Compile Include="Assets\uOSC\Assets\uOSC\Examples\Scripts\ClientBundleTest.cs" />
     <Compile Include="Assets\uOSC\Assets\uOSC\Examples\Scripts\ClientTest.cs" />
@@ -270,6 +274,7 @@
     <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
     <None Include="Assets\Shaders\Dissolve.shader" />
     <None Include="Assets\ImageEffect\Shader\RadiationBlur.shader" />
+    <None Include="Assets\MidiJack\ProjectSettings\ProjectVersion.txt" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_VertexBillboard.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_TextureBlender.shader" />
     <None Include="Assets\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
@@ -280,6 +285,7 @@
     <None Include="Assets\ImageEffect\Shader\Reflection.shader" />
     <None Include="Assets\Shaders\test.shader" />
     <None Include="Assets\ProCore\Polybrush\Shader\Example\z_UnlitTextureBlend_WithMetaData.shader" />
+    <None Include="Assets\Scene1\BumpShader.shader" />
     <None Include="Assets\Scene1\Shaders\GeometryShader_.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Common.cginc" />
     <None Include="Assets\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
@@ -288,7 +294,6 @@
     <None Include="Assets\PostProcessing\Editor Resources\UI\Trackball.shader" />
     <None Include="Assets\uOSC\ProjectSettings\ProjectVersion.txt" />
     <None Include="Assets\Scene1\Shaders\TogeToge.shader" />
-    <None Include="Assets\MidiJack\ProjectSettings\ProjectVersion.txt" />
     <None Include="Assets\Shaders\SimplexNoise2D.cginc" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_StandardVertexColor.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.cginc" />
@@ -328,19 +333,19 @@
     <None Include="Assets\ImageEffect\Shader\Utils2D.cginc" />
     <None Include="Assets\ProCore\Polybrush\Shader\z_TextureBlendModulate_SfSrc.shader" />
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ_2018_12_27/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ_2018_12_27/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ_2018_12_27/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ_2018_12_27/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ-2018-12-27/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/takai/Documents/UnityProjects/VJ_2018_12_27/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity2018.2.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

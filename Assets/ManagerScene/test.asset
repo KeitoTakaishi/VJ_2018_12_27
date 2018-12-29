@@ -80,8 +80,8 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       shutterAngle: 270
-      sampleCount: 6
-      frameBlending: 0.625
+      sampleCount: 10
+      frameBlending: 0.77
   eyeAdaptation:
     m_Enabled: 0
     m_Settings:
@@ -100,8 +100,8 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.33
-        threshold: 0.31
+        intensity: 0.45
+        threshold: 0.25
         softKnee: 0.5
         radius: 1.19
         antiFlicker: 0

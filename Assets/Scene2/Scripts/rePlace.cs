@@ -62,6 +62,7 @@ public class rePlace : MonoBehaviour {
 
 
         for (int i = 0; i < childNum; i++) {
+            //float scale = server.val > 5.0f ? 5.0 : server;
             child[i].transform.localScale = new Vector3(server.val / 5.0f, server.val / 5.0f, server.val / 5.0f);
         }
 

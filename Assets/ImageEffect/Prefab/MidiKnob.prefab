@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4964026466141006}
-  - component: {fileID: 114265722945220386}
+  - component: {fileID: 114858639888577858}
   m_Layer: 0
   m_Name: MidiKnob
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114265722945220386
+--- !u!114 &114858639888577858
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1335484505348466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1d8e065f93124c65bffcb3943974a4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ae4af7775a1a274aaf33a71184f47a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   knobNumber: 0

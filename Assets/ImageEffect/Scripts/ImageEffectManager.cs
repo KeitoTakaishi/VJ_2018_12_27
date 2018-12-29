@@ -16,12 +16,14 @@ public class ImageEffectManager : MonoBehaviour {
     public Distortion distortion;
     public Reflection reflection;
     public RandomInvert randomInvert;
+    public RGBShift rgbShift;
 
 
     public float maxMosaiceScale = 32;
     public float effectTime = 0.75f;
     public float maxRadiationBlurPower = 32f;
     public float maxDistortionPower = 0.1f;
+    public float maxRGBShiftPower = 16;
 
     #endregion
 
@@ -55,6 +57,16 @@ public class ImageEffectManager : MonoBehaviour {
         }
     }
 
+    IEnumerator ActionRGBShift()
+    {
+        float duration = effectTime;
+        while (duration > 0f) {
+            duration = Mathf.Max(duration - Time.deltaTime, 0);
+            rgbShift.shiftPower = Easing.Ease(EaseType.QuadOut, maxRGBShiftPower, 0, 1f - duration / effectTime);
+            yield return null;
+        }
+    }
+
     void ActionReflectionLR()
     {
         reflection.horizontalReflect = !reflection.horizontalReflect;
@@ -81,8 +93,8 @@ public class ImageEffectManager : MonoBehaviour {
         }else if (MidiPad.isPressed[5]) {
             randomInvert.StartInvert();
         } else if (MidiPad.isPressed[6]) {
-
-        }else if (MidiPad.isPressed[7]) {
+            StartCoroutine(ActionRGBShift());
+        } else if (MidiPad.isPressed[7]) {
 
         }
     }
@@ -109,6 +121,8 @@ public class ImageEffectManager : MonoBehaviour {
 	
 	void Update () {
         effectTime = KnobIndicatorGroups.knobVal[4];
+        maxRGBShiftPower = KnobIndicatorGroups.knobVal[2] * 168;
+
         MidiChecker();
     }
 }
